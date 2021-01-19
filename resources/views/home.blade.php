@@ -20,18 +20,16 @@
                     <div class="row">
                         <div class="col-sm-6 col-md-4">
                             <div class="thumbnail">
-                                <img src="..." alt="...">
                                 <div class="caption">
-                                    <h3>Data Kriteria</h3>
-                                    <p><a href="#" class="btn btn-primary" role="button">Menuju</a></p>
+                                    <h3 style="display: flex; align-items: center;"><i class="ion-ios-list" style="font-size: 50px; margin-right: 10px;"></i>Data Kriteria</h3>
+                                    <p><a href="{{ route('kriteria.index') }}" class="btn btn-primary" role="button">Menuju</a></p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-sm-6 col-md-4">
                             <div class="thumbnail">
-                                <img src="..." alt="...">
                                 <div class="caption">
-                                    <h3>Data Jurusan</h3>
+                                    <h3 style="display: flex; align-items: center;"><i class="ion-ios-list" style="font-size: 50px; margin-right: 10px;"></i>Data Jurusan</h3>
                                     <p><a href="#" class="btn btn-primary" role="button">Menuju</a></p>
                                 </div>
                             </div>
@@ -49,9 +47,8 @@
                     <div class="row">
                         <div class="col-sm-6 col-md-4">
                             <div class="thumbnail">
-                                <img src="..." alt="...">
                                 <div class="caption">
-                                    <h3>Masih Mencoba... :)</h3>
+                                    <h3 style="display: flex; align-items: center;"><i class="ion-ios-analytics" style="font-size: 50px; margin-right: 10px;"></i>Analisis Data</h3>
                                     <p><a href="#" class="btn btn-primary" role="button">Menuju</a></p>
                                 </div>
                             </div>

@@ -11,6 +11,7 @@
     <title>SPK JURUSAN AJA DEH</title>
 
     <!-- Styles -->
+    <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
