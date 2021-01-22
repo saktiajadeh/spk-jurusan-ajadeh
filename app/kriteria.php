@@ -12,4 +12,8 @@ class kriteria extends Model
     {
         return $this->hasOne('App\User', 'id', 'id_user');
     }
+    public function sub_kriteria()
+    {
+        return $this->hasOne('App\kriteria', 'id', 'id_kriteria_sub');
+    }
 }

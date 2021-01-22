@@ -13,6 +13,7 @@
     <!-- Styles -->
     <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -45,8 +46,8 @@
                                 </a>
 
                                 <ul class="dropdown-menu">
-                                    <li><a href="{{ route('kriteria.index') }}">Data Kriteria</a></li>
-                                    <li><a href="#">Data Jurusan</a></li>
+                                    <li><a href="{{ route('kriteria.index') }}"><i class="ion-ios-list" style="font-size: 14px; margin-right: 10px;"></i>Data Kriteria</a></li>
+                                    <li><a href="#"><i class="ion-ios-list" style="font-size: 14px; margin-right: 10px;"></i>Data Alternatif Jurusan</a></li>
                                 </ul>
                             </li>
                             <li class="dropdown">
@@ -55,7 +56,9 @@
                                 </a>
 
                                 <ul class="dropdown-menu">
-                                    <li><a href="#">Masih Mencoba... :)</a></li>
+                                    <li><a href="{{ route('kriteria.edit', auth()->user()->id) }}"><i class="ion-ios-analytics" style="font-size: 14px; margin-right: 10px;"></i>Analisis Kriteria</a></li>
+                                    <li><a href="#"><i class="ion-ios-analytics" style="font-size: 14px; margin-right: 10px;"></i>Analisis Alternatif Jurusan</a></li>
+                                    <li><a href="#"><i class="ion-flash" style="font-size: 14px; margin-right: 10px;"></i>Ranking</a></li>
                                 </ul>
                             </li>
                         @endguest
@@ -78,7 +81,7 @@
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                            Logout
+                                            <i class="ion-log-out" style="font-size: 14px; margin-right: 10px;"></i>Logout
                                         </a>
 
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
