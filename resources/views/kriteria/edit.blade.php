@@ -51,7 +51,7 @@
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     <div class="pull-left">
-                        <h4 style="margin: 0;">Info Bobot</h4>
+                        <h4 style="margin: 0;">Informasi Bobot</h4>
                     </div>
                     
                     <div class="pull-right">
@@ -60,7 +60,10 @@
                 </div>
                 <div class="panel-body">
                     <table class="table table-bordered table-hover" style="margin: 0;">
-                        <thead  bgcolor="#3097d1" style="color: white;">
+                        <tbody>
+                            <tr style="background-color: #3097d1 !important;color: white !important;">
+                                <td colspan="9">Konversi :</td>
+                            </tr>
                             <tr>
                                 <td width="11%" align="center" style="vertical-align: middle;">4</td>
                                 <td width="11%" align="center" style="vertical-align: middle;">3</td>
@@ -72,8 +75,6 @@
                                 <td width="11%" align="center" style="vertical-align: middle;">-3</td>
                                 <td width="11%" align="center" style="vertical-align: middle;">-4</td>
                             </tr>
-                        </thead>
-                        <tbody>
                             <tr>
                                 <td align="center" style="vertical-align: middle;">9</td>
                                 <td align="center" style="vertical-align: middle;">7</td>

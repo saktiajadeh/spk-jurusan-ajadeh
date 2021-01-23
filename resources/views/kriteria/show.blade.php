@@ -5,7 +5,7 @@
 <div class="container">
     @if(session()->has('update-kriteria'))
         <div class="alert alert-success">
-            <button type="button" class="close" data-dismiss="alert">×</button>	
+            <button type="button" class="close" data-dismiss="alert" style="outline: none;"><i class="ion-close-circled"></i></button>	
             {{ session('update-kriteria') }}
         </div>
     @endif
