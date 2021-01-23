@@ -2,7 +2,6 @@
 
 @section('content')
 <div class="container">
-    {{ dd(auth()->user()) }}
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-primary">
