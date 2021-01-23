@@ -53,7 +53,8 @@ class KriteriaController extends Controller
      */
     public function show($id)
     {
-        //
+        $kriteria = kriteria::where('id_user', $id)->get();
+        return view('kriteria.show', compact('kriteria', $kriteria));
     }
 
     /**
@@ -86,12 +87,10 @@ class KriteriaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        return "anjay";
         // dd($request->all());
         // session()->flash('status-ahp', 'Hasil Consistency Ratio:(0.09), Checker AHP : Consistency Ratio Harus < 0.1, silahkan lakukan pembobotan kriteria kembali :)');
         // session()->forget('status-ahp');
-        // return redirect()->route('kriteria.edit', $id);
-        // return redirect()->route('kriteria.index');
+        return redirect()->route('kriteria.show', $id);
     }
 
     /**
