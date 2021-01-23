@@ -3,6 +3,12 @@
 @section('content')
 
 <div class="container">
+    @if(session()->has('update-kriteria'))
+        <div class="alert alert-success">
+            <button type="button" class="close" data-dismiss="alert">×</button>	
+            {{ session('update-kriteria') }}
+        </div>
+    @endif
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-primary">
@@ -22,12 +28,6 @@
                             <h1>Data Kriteria Masih Kosong</h1>
                         </div>
                     @else
-                        @if(session()->has('status-ahp'))
-                            <div class="alert alert-danger">
-                                <button type="button" class="close" data-dismiss="alert">×</button>	
-                                {{ session('status-ahp') }}
-                            </div>
-                        @endif
                         on progress bro
                     @endif
                 </div>
@@ -52,12 +52,6 @@
                             <h1>Data Kriteria Masih Kosong</h1>
                         </div>
                     @else
-                        @if(session()->has('status-ahp'))
-                            <div class="alert alert-danger">
-                                <button type="button" class="close" data-dismiss="alert">×</button>	
-                                {{ session('status-ahp') }}
-                            </div>
-                        @endif
                         on progress bro
                     @endif
                 </div>
