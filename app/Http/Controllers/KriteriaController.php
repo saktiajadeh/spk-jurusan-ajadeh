@@ -139,10 +139,6 @@ class KriteriaController extends Controller
     {
         $kriteria = kriteria::where('id_user', $id)->get();
         $dataFindCR = $this->consistencyRatioKriteria($kriteria);
-        
-        if($dataFindCR['consistencyRatio'] < 0.1){
-            session()->flash('cr-passed', 'Consistency Ratio Terpenuhi! Silahkan Lanjut ke Analisis Alternatif Jurusan');
-        }
         return view('kriteria.show', compact('kriteria', $kriteria, 'dataFindCR', $dataFindCR));
     }
 

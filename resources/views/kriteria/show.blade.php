@@ -119,16 +119,16 @@
                 <div class="panel-body">
                     <p>Consistency Ratio adalah <strong style="color: #3097d1;">{{ $dataFindCR['consistencyRatio'] }}</strong></p>
                     <p>Jika <strong>Consistency Ratio</strong> tidak terpenuhi silahkan ulangi lakukan pembobotan kriteria hingga <strong>Consistency Ratio</strong> terpenuhi. <br/>Untuk dapat terpenuhi harus bernilai < 0.1</p>
-                    @if(session()->has('cr-passed'))
+                    @if($dataFindCR['consistencyRatio'] < 0.1)
                         <div class="alert alert-success">
                             <button type="button" class="close" data-dismiss="alert" style="outline: none;"><i class="ion-close-circled"></i></button>
-                            {{ session('cr-passed') }}
+                            <strong>Consistency Ratio Terpenuhi!</strong> Silahkan Lanjut ke Analisis Alternatif Jurusan
                         </div>
                         <a class="btn btn-success btn-md" href="#" role="button">Lanjut ke Analisis Alternatif Jurusan</a>
                     @else
                         <div class="alert alert-danger">
                             <button type="button" class="close" data-dismiss="alert" style="outline: none;"><i class="ion-close-circled"></i></button>
-                            Consistency Ratio Tidak Terpenuhi! Silahkan ulangi lakukan pembobotan kriteria
+                            <strong>Consistency Ratio Tidak Terpenuhi!</strong> Silahkan ulangi lakukan pembobotan kriteria
                         </div>
                         <a class="btn btn-danger btn-md" href="{{ route('kriteria.edit', auth()->user()->id) }}" role="button">Pembobotan Kriteria Kembali</a>
                     @endif
