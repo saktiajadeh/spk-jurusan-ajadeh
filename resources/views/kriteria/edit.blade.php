@@ -37,9 +37,9 @@
                                     <p style="min-width: 65px;">{{ $dataKriteria->sub_kriteria->name }}</p>
                                 </div>
                             @endforeach
-                        <div class="text-right" style="margin-top: 20px;">
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </div>
+                            <div class="text-right" style="margin-top: 20px;">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
                         </form>
                     @endif
                 </div>

@@ -12,6 +12,90 @@ class KriteriaController extends Controller
     {
         $this->middleware('auth');
     }
+    public function consistencyRatioKriteria($paramK)
+    {
+        $kriteria = $paramK;
+        $matriks = [];
+        $sumMatriks = [0, 0, 0];
+        foreach ($kriteria as $key => $value) {
+            foreach ($kriteria as $keysub => $valuesub) {
+                //set matriks arr
+                $newVal = 0;
+                $matriks[$key][$keysub] = "";
+                if ($key != $keysub) {
+                    if ($key == 0 && $keysub == 1) {
+                        $newVal = floatval($valuesub->bobot_utama);
+                    }
+                    if ($key == 0 && $keysub == 2) {
+                        $newVal = floatval($valuesub->bobot_utama);
+                    }
+                    if ($key == 1 && $keysub == 0) {
+                        $newVal = floatval($valuesub->sub_kriteria->persen_bobot_sub);
+                    }
+                    if ($key == 1 && $keysub == 2) {
+                        $newVal = floatval($valuesub->sub_kriteria->bobot_utama);
+                    }
+                    if ($key == 2 && $keysub == 0) {
+                        $newVal = floatval($valuesub->sub_kriteria->sub_kriteria->persen_bobot_sub);
+                    }
+                    if ($key == 2 && $keysub == 1) {
+                        $newVal = floatval($valuesub->sub_kriteria->sub_kriteria->persen_bobot_sub);
+                    }
+                } else {
+                    $newVal = 1;
+                }
+                $matriks[$key][$keysub] = $newVal;
+
+                //set sum matriks arr
+                $sumMatriks[$keysub] = $sumMatriks[$keysub] + $matriks[$key][$keysub];
+            }
+        }
+
+        $normalisasi = [];
+        $sumNormalisasi = [0, 0, 0];
+        foreach ($kriteria as $key => $value) {
+            foreach ($kriteria as $keysub => $valuesub) {
+                //set normalisasi arr
+                $normalisasi[$key][$keysub] = "";
+                $newVal = $matriks[$key][$keysub] / $sumMatriks[$keysub];
+                $normalisasi[$key][$keysub] = round($newVal, 4);
+
+                //set sum normalisasi arr
+                $sumNormalisasi[$keysub] = $sumNormalisasi[$keysub] + $newVal;
+            }
+        }
+        $eigenVector = [0, 0, 0];
+        $principalEigenValue = 0;
+        $nTotal = count($kriteria);
+        $randomIndex = 0.58;
+        $consistencyIndex = 0;
+        $consistencyRatio = 0;
+        foreach ($kriteria as $key => $value) {
+            foreach ($kriteria as $keysub => $valuesub) {
+                $eigenVector[$key] = $eigenVector[$key] + $normalisasi[$key][$keysub];
+            }
+        }
+        foreach ($eigenVector as $key => $value) {
+            $eigenVector[$key] = $value / $nTotal;
+            $principalEigenValue = $principalEigenValue + ($sumMatriks[$key] * $eigenVector[$key]);
+        }
+        $principalEigenValue = round($principalEigenValue, 2);
+        $consistencyIndex = round(number_format(($principalEigenValue - $nTotal), 9), 4) / ($nTotal - 1);
+        $consistencyRatio = $consistencyIndex / $randomIndex;
+        $data = [
+            'matriks' => $matriks,
+            'sumMatriks' => $sumMatriks,
+            'normalisasi' => $normalisasi,
+            'sumNormalisasi' => $sumNormalisasi,
+            'eigenVector' => $eigenVector,
+            'principalEigenValue' => $principalEigenValue,
+            'nTotal' => $nTotal,
+            'randomIndex' => $randomIndex,
+            'consistencyIndex' => $consistencyIndex,
+            'consistencyRatio' => $consistencyRatio,
+        ];
+        return $data;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -53,10 +137,13 @@ class KriteriaController extends Controller
      */
     public function show($id)
     {
-        // session()->flash('status-ahp', 'Hasil Consistency Ratio:(0.09), Checker AHP : Consistency Ratio Harus < 0.1, silahkan lakukan pembobotan kriteria kembali :)');
-        // session()->forget('status-ahp');
         $kriteria = kriteria::where('id_user', $id)->get();
-        return view('kriteria.show', compact('kriteria', $kriteria));
+        $dataFindCR = $this->consistencyRatioKriteria($kriteria);
+        
+        if($dataFindCR['consistencyRatio'] < 0.1){
+            session()->flash('cr-passed', 'Consistency Ratio Terpenuhi! Silahkan Lanjut ke Analisis Alternatif Jurusan');
+        }
+        return view('kriteria.show', compact('kriteria', $kriteria, 'dataFindCR', $dataFindCR));
     }
 
     /**
@@ -109,7 +196,6 @@ class KriteriaController extends Controller
                 'bobot_utama' => $newData['bobot_utama'],
                 'persen_bobot_sub' => $newData['persen_bobot_sub'],
             ]);
-            session()->flash('update-kriteria', 'Berhasil Update Data Bobot Kriteria');
         }
         return redirect()->route('kriteria.show', $id);
     }
