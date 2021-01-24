@@ -197,6 +197,7 @@ class KriteriaController extends Controller
                 'persen_bobot_sub' => $newData['persen_bobot_sub'],
             ]);
         }
+        session()->flash('update-kriteria', 'Berhasil Update Data Bobot Kriteria');
         return redirect()->route('kriteria.show', $id);
     }
 
