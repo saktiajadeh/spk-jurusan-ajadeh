@@ -155,7 +155,11 @@ class KriteriaController extends Controller
     {
         $kriteria = kriteria::where('id_user', $id)->get();
         $dataFindCR = $this->consistencyRatioKriteria($kriteria);
-        return view('kriteria.show', compact('kriteria', $kriteria, 'dataFindCR', $dataFindCR));
+        $data = [
+            'kriteria' => $kriteria,
+            'dataFindCR' => $dataFindCR
+        ];
+        return view('kriteria.show', ['data' => $data]);
     }
 
     /**
@@ -193,7 +197,11 @@ class KriteriaController extends Controller
                 'Keinginan'
             ],
         ];
-        return view('kriteria.edit', compact('kriteria', $kriteria, 'dataMatriks', $dataMatriks));
+        $data = [
+            'kriteria' => $kriteria,
+            'dataMatriks' => $dataMatriks
+        ];
+        return view('kriteria.edit', ['data' => $data]);
     }
 
     /**

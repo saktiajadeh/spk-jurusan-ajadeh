@@ -23,7 +23,7 @@
                 </div>
 
                 <div class="panel-body">
-                    @if($kriteria->isEmpty())
+                    @if($data['kriteria']->isEmpty())
                         <div class="jumbotron text-center" style="margin: 0;">
                             <h1>Data Kriteria Masih Kosong</h1>
                         </div>
@@ -32,21 +32,21 @@
                             <tbody>
                                 <tr style="background-color: #3097d1 !important;color: white !important;">
                                     <td><strong>Antar Kriteria</strong></td>
-                                    @foreach ( $kriteria as $i => $dataKriteria )
+                                    @foreach ( $data['kriteria'] as $i => $dataKriteria )
                                         <td>{{ $dataKriteria->name }}</td>
                                     @endforeach
                                 </tr>
-                                @foreach ( $kriteria as $i => $dataKriteria )
+                                @foreach ( $data['kriteria'] as $i => $dataKriteria )
                                     <tr>
                                         <td style="background-color: #3097d1 !important;color: white !important;">{{ $dataKriteria->name }}</td> 
-                                        <td>{{ $dataFindCR['matriks'][$i][0] }}</td>
-                                        <td>{{ $dataFindCR['matriks'][$i][1] }}</td>
-                                        <td>{{ $dataFindCR['matriks'][$i][2] }}</td>
+                                        <td>{{ $data['dataFindCR']['matriks'][$i][0] }}</td>
+                                        <td>{{ $data['dataFindCR']['matriks'][$i][1] }}</td>
+                                        <td>{{ $data['dataFindCR']['matriks'][$i][2] }}</td>
                                     </tr>
                                 @endforeach
                                 <tr style="background-color: #3097d1 !important;color: white !important;">
                                     <td><strong>Jumlah</strong></td>
-                                    @foreach ( $dataFindCR['sumMatriks'] as $i => $dataSumMatriks )
+                                    @foreach ( $data['dataFindCR']['sumMatriks'] as $i => $dataSumMatriks )
                                         <td>{{ $dataSumMatriks }}</td>
                                     @endforeach
                                 </tr>
@@ -70,7 +70,7 @@
                     <div class="clearfix"></div>
                 </div>
                 <div class="panel-body">
-                    @if($kriteria->isEmpty())
+                    @if($data['kriteria']->isEmpty())
                         <div class="jumbotron text-center" style="margin: 0;">
                             <h1>Data Kriteria Masih Kosong</h1>
                         </div>
@@ -79,21 +79,21 @@
                             <tbody>
                                 <tr style="background-color: #3097d1 !important;color: white !important;">
                                     <td><strong>Antar Kriteria</strong></td>
-                                    @foreach ( $kriteria as $i => $dataKriteria )
+                                    @foreach ( $data['kriteria'] as $i => $dataKriteria )
                                         <td>{{ $dataKriteria->name }}</td>
                                     @endforeach
                                 </tr>
-                                @foreach ( $kriteria as $i => $dataKriteria )
+                                @foreach ( $data['kriteria'] as $i => $dataKriteria )
                                     <tr>
                                         <td style="background-color: #3097d1 !important;color: white !important;">{{ $dataKriteria->name }}</td> 
-                                        <td>{{ $dataFindCR['normalisasi'][$i][0] }}</td>
-                                        <td>{{ $dataFindCR['normalisasi'][$i][1] }}</td>
-                                        <td>{{ $dataFindCR['normalisasi'][$i][2] }}</td>
+                                        <td>{{ $data['dataFindCR']['normalisasi'][$i][0] }}</td>
+                                        <td>{{ $data['dataFindCR']['normalisasi'][$i][1] }}</td>
+                                        <td>{{ $data['dataFindCR']['normalisasi'][$i][2] }}</td>
                                     </tr>
                                 @endforeach
                                 <tr style="background-color: #3097d1 !important;color: white !important;">
                                     <td><strong>Jumlah</strong></td>
-                                    @foreach ( $dataFindCR['sumNormalisasi'] as $i => $dataSumNormalisasi )
+                                    @foreach ( $data['dataFindCR']['sumNormalisasi'] as $i => $dataSumNormalisasi )
                                         <td>{{ $dataSumNormalisasi }}</td>
                                     @endforeach
                                 </tr>
@@ -117,9 +117,9 @@
                     <div class="clearfix"></div>
                 </div>
                 <div class="panel-body">
-                    <p>Consistency Ratio adalah <strong style="color: #3097d1;">{{ $dataFindCR['consistencyRatio'] }}</strong></p>
+                    <p>Consistency Ratio adalah <strong style="color: #3097d1;">{{ $data['dataFindCR']['consistencyRatio'] }}</strong></p>
                     <p>Jika <strong>Consistency Ratio</strong> tidak terpenuhi silahkan ulangi lakukan pembobotan kriteria hingga <strong>Consistency Ratio</strong> terpenuhi. <br/>Untuk dapat terpenuhi harus bernilai < 0.1</p>
-                    @if($dataFindCR['consistencyRatio'] < 0.1)
+                    @if($data['dataFindCR']['consistencyRatio'] < 0.1)
                         <div class="alert alert-success">
                             <button type="button" class="close" data-dismiss="alert" style="outline: none;"><i class="ion-close-circled"></i></button>
                             <strong>Consistency Ratio Terpenuhi!</strong> Silahkan Lanjut ke Analisis Alternatif Jurusan
