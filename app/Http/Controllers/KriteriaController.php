@@ -117,7 +117,11 @@ class KriteriaController extends Controller
                 'Harga'
             ],
         ];
-        return view('kriteria.index', compact('kriteria', $kriteria, 'dataMatriks', $dataMatriks));
+        $data = [
+            'kriteria' => $kriteria,
+            'dataMatriks' => $dataMatriks
+        ];
+        return view('kriteria.index', compact('data', $data));
     }
 
     /**

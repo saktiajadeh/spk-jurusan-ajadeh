@@ -24,7 +24,7 @@
                 </div>
 
                 <div class="panel-body">
-                    @if($kriteria->isEmpty())
+                    @if($data['kriteria']->isEmpty())
                         <div class="jumbotron text-center" style="margin: 0;">
                             <h1>Data Kriteria Masih Kosong</h1>
                             <?php 
@@ -50,13 +50,13 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ( $kriteria as $i => $dataKriteria )
+                                @foreach ( $data['kriteria'] as $i => $dataKriteria )
                                     <tr>
                                         <td align="center" style="vertical-align: middle;">{{ $i+1 }}</td>
-                                        <td style="vertical-align: middle;">{{$dataMatriks['kiri'][$i] }}</td>
+                                        <td style="vertical-align: middle;">{{$data['dataMatriks']['kiri'][$i] }}</td>
                                         <td style="vertical-align: middle;">{{ $dataKriteria->bobot_utama }}</td>
                                         <td style="vertical-align: middle;">{{ $dataKriteria->persen_bobot_sub }}</td>
-                                        <td style="vertical-align: middle;">{{ $dataMatriks['kanan'][$i] }}</td>
+                                        <td style="vertical-align: middle;">{{ $data['dataMatriks']['kanan'][$i] }}</td>
                                         <?php 
                                         /*
                                         <td style="vertical-align: middle;">
