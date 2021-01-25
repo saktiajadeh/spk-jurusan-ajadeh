@@ -27,14 +27,15 @@
                             <input type="hidden" name="_method" value="PUT"/>
                             @foreach ( $kriteria as $i => $dataKriteria )
                                 <div style="display: flex;justify-content: space-between; margin-bottom: 20px;">
-                                    <p style="min-width: 65px;">{{ $dataKriteria->name }}</p>
+                                    <p style="min-width: 65px;">{{ $dataMatriks['kiri'][$i] }}</p>
                                     <div style="width: 100%; padding: 0 20px; padding-top: 8px;">
-                                        <input name="{{ "bobot_utama_".$dataKriteria->id }}" class="slider-bar" id="{{ "bobot_utama_".$dataKriteria->id }}" type="range" min="-4" max="4" value="{{ $dataKriteria->bobot_utama }}" step="1" oninput="{{ 'output_'.$dataKriteria->id }}.value = {{ 'bobot_utama_'.$dataKriteria->id }}.value;" style="transform: scale(-1, 1);"/>
+                                        <input name="{{ "bobot_utama_".$dataKriteria->id }}" class="slider-bar" id="{{ "bobot_utama_".$dataKriteria->id }}" type="range" min="-4" max="4" value="{{ $dataKriteria->bobot_utama }}" step="1" oninput="{{ 'output_'.$dataKriteria->id }}.value = {{ 'bobot_utama_'.$dataKriteria->id }}.value; {{ 'output_sub'.$dataKriteria->id }}.value = -({{ 'bobot_utama_'.$dataKriteria->id }}.value)" style="transform: scale(-1, 1);"/>
                                         <div style="display: flex;align-items: center;justify-content: space-between;">
                                             <output id="{{ "output_".$dataKriteria->id }}" class="output">{{ $dataKriteria->bobot_utama }}</output>
+                                            <output id="{{ "output_sub".$dataKriteria->id }}" class="output">{{ $dataKriteria->bobot_utama }}</output>
                                         </div>
                                     </div>
-                                    <p style="min-width: 65px;">{{ $dataKriteria->sub_kriteria->name }}</p>
+                                    <p style="min-width: 65px;">{{ $dataMatriks['kanan'][$i] }}</p>
                                 </div>
                             @endforeach
                             <div class="text-right" style="margin-top: 20px;">

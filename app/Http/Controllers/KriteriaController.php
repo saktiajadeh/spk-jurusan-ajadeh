@@ -105,7 +105,19 @@ class KriteriaController extends Controller
     {
         $user = auth()->user();
         $kriteria = kriteria::where('id_user', $user->id)->get();
-        return view('kriteria.index', compact('kriteria', $kriteria));
+        $dataMatriks = [
+            'kiri' => [
+                'Keinginan',
+                'Harga',
+                'Keinginan'
+            ],
+            'kanan' => [
+                'Prospek',
+                'Prospek',
+                'Harga'
+            ],
+        ];
+        return view('kriteria.index', compact('kriteria', $kriteria, 'dataMatriks', $dataMatriks));
     }
 
     /**
@@ -159,10 +171,25 @@ class KriteriaController extends Controller
                 9.0000, 7.0000, 5.0000, 3.0000, 1.0000, 0.3333, 0.2, 0.1428, 0.1111
             ];
             $findIndex = array_search($value->bobot_utama, $valOriArr);
+            $findIndexSub = array_search($value->persen_bobot_sub, $valOriArr);
             $parseValueBobotUtama = $valInputRangeArr[$findIndex];
+            $parseValueBobotSub = $valInputRangeArr[$findIndexSub];
             $value->bobot_utama = $parseValueBobotUtama;
+            $value->persen_bobot_sub = $parseValueBobotSub;
         }
-        return view('kriteria.edit', compact('kriteria', $kriteria));
+        $dataMatriks = [
+            'kiri' => [
+                'Harga',
+                'Harga',
+                'Prospek'
+            ],
+            'kanan' => [
+                'Prospek',
+                'Keinginan',
+                'Keinginan'
+            ],
+        ];
+        return view('kriteria.edit', compact('kriteria', $kriteria, 'dataMatriks', $dataMatriks));
     }
 
     /**
