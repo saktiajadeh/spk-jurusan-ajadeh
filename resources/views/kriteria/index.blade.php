@@ -76,7 +76,7 @@
                             </tbody>
                         </table>
                         <div class="pull-right" style="margin-top: 20px;">
-                            <p><a class="btn btn-primary btn-md" href="{{ route('kriteria.edit', auth()->user()->id) }}" role="button">Pembobotan Kriteria</a></p>
+                            <p><a class="btn btn-primary btn-md" href="{{ route('kriteria.edit', auth()->user()->id) }}" role="button">Analisis Kriteria</a></p>
                         </div>
                         <div class="clearfix"></div>
                     @endif

@@ -124,7 +124,7 @@
                             <button type="button" class="close" data-dismiss="alert" style="outline: none;"><i class="ion-close-circled"></i></button>
                             <strong>Consistency Ratio Terpenuhi!</strong> Silahkan Lanjut ke Analisis Alternatif Jurusan
                         </div>
-                        <a class="btn btn-success btn-md" href="#" role="button">Lanjut ke Analisis Alternatif Jurusan</a>
+                        <a class="btn btn-success btn-md" href="{{ route('alternatif.edit', auth()->user()->id) }}" role="button">Lanjut ke Analisis Alternatif Jurusan</a>
                     @else
                         <div class="alert alert-danger">
                             <button type="button" class="close" data-dismiss="alert" style="outline: none;"><i class="ion-close-circled"></i></button>

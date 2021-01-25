@@ -47,7 +47,7 @@
 
                                 <ul class="dropdown-menu">
                                     <li><a href="{{ route('kriteria.index') }}"><i class="ion-ios-list" style="font-size: 14px; margin-right: 10px;"></i>Data Kriteria</a></li>
-                                    <li><a href="#"><i class="ion-ios-list" style="font-size: 14px; margin-right: 10px;"></i>Data Alternatif Jurusan</a></li>
+                                    <li><a href="{{ route('alternatif.index') }}"><i class="ion-ios-list" style="font-size: 14px; margin-right: 10px;"></i>Data Alternatif Jurusan</a></li>
                                 </ul>
                             </li>
                             <li class="dropdown">
@@ -57,8 +57,8 @@
 
                                 <ul class="dropdown-menu">
                                     <li><a href="{{ route('kriteria.edit', auth()->user()->id) }}"><i class="ion-ios-analytics" style="font-size: 14px; margin-right: 10px;"></i>Analisis Kriteria</a></li>
-                                    <li><a href="#"><i class="ion-ios-analytics" style="font-size: 14px; margin-right: 10px;"></i>Analisis Alternatif Jurusan</a></li>
-                                    <li><a href="#"><i class="ion-flash" style="font-size: 14px; margin-right: 10px;"></i>Ranking</a></li>
+                                    <li><a href="{{ route('alternatif.edit', auth()->user()->id) }}"><i class="ion-ios-analytics" style="font-size: 14px; margin-right: 10px;"></i>Analisis Alternatif Jurusan</a></li>
+                                    <li><a href="{{ route('alternatif.show', auth()->user()->id) }}"><i class="ion-flash" style="font-size: 14px; margin-right: 10px;"></i>Ranking</a></li>
                                 </ul>
                             </li>
                         @endguest
