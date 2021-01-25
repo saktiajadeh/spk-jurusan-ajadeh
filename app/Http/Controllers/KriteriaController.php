@@ -121,7 +121,7 @@ class KriteriaController extends Controller
             'kriteria' => $kriteria,
             'dataMatriks' => $dataMatriks
         ];
-        return view('kriteria.index', compact('data', $data));
+        return view('kriteria.index', ['data' => $data]);
     }
 
     /**
